@@ -40,4 +40,4 @@ app.get('/', (req, res) => {
   res.json({ message: 'Todo Backend API', status: 'ok' });
 });
 
-app.use('/api/todos', todosRouter);
+app.use('/todos', todosRouter);
