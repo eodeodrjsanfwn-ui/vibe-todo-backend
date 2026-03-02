@@ -12,13 +12,12 @@ if (dotenvResult.error) {
 }
 
 const express = require('express');
-const openBrowser = require('open').default || require('open');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const todosRouter = require('./routers/todos');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/todo-backend';
 
 app.use(cors());
@@ -30,7 +29,6 @@ mongoose
     console.log('연결 성공');
     app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);
-      openBrowser(`http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
